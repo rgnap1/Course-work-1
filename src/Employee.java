@@ -3,13 +3,15 @@ public class Employee {
     private Name fullName;
     private int  departmentNumber;
     private double salary;
-    static int id = 0;
+    private int id = 0;
+    private static int lastId = 1;
 
     public Employee(Name fullName,int  departmentNumber,double salary){
         this.fullName = fullName;
         this.departmentNumber = departmentNumber;
         this.salary = salary;
-        id++;
+        this.id = lastId;
+        lastId ++;
     }
     public Name getFullName(){
         return this.fullName;
@@ -17,16 +19,18 @@ public class Employee {
     public int getDepartmentNumber(){
         return this.departmentNumber;
     }
-    public void setDepartmentNumber(int departmentNumber){
-        this.departmentNumber = departmentNumber;
-    }
     public double getSalary(){
         return this.salary;
+    }
+    public int getId(){
+        return id;
+    }
+    public void setDepartmentNumber(int departmentNumber){
+        this.departmentNumber = departmentNumber;
     }
     public void setSalary(double salary){
         this.salary = salary;
     }
-
     @Override
     public String toString() {
         return "ФИО сотрудника : " + fullName + " ; " + " номер отдела сотрудника : "  + departmentNumber + " ; " +  " размер зп сотрудника в месяц : " + salary ;
@@ -44,8 +48,5 @@ public class Employee {
     public int hashCode() {
         return Objects.hash(fullName,departmentNumber, salary, id);
     }
-
-
-
 
 }
