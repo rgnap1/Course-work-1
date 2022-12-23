@@ -22,94 +22,80 @@ public class Main {
     employees[7] = new Employee(man8,3,44_000);
     employees[8] = new Employee(man9,2,43_000);
     employees[9] = new Employee(man10,3,51_000);
-        //Распечатываем список всех сотрудников со всеми имеющимися данными
-    printEmployee(employees);
-       //Считаем общую сумму зп всех сотрудников
-    calculateSumSalary(employees);
-      //Распечатываем сотрудника с min зп
-    printMinSalary(employees);
-      //Распечатываем сотрудника с max зп
-    printMaxSalary(employees);
-      //Считаем среднее значение зп по всем сотрудникам
-    calculateAverageSumSalary(employees);
-    //Распечатываем ФИО всех сотрудников
-    printFullNameAllEmployees(employees);
-        System.out.println(" ");
-    ////Проиндексировали зп всех сотрудников на % и вызвали изменения в зп каждого сотрудника
-    calculatePercentSalary(employees,2);
-    ///Распечатываем минимальную зарплату в конкретном отделе
-    printMinSalaryInDepartment(employees,2);
-    ///Распечатываем максимальную зарплату в конкретном отделе
-    printMaxSalaryInDepartment(employees,2);
-    ///Считаем сумму зарплат всех сотрудников в конкретном отделе
-    calculateSumSalaryInDepartment(employees,2);
-    ///Считаем среднюю зарплату по конкретному отделу
-    calculateAverageSumSalaryInDepartment(employees,2);
-    ///Индексируем зарплату сотрудников конкретного отдела на заданный %
-    calculatePercentSalaryInDepartment(employees,2,2);
-    ///Распечатываем всех сотрудников конкретного отдела (все данные сотрудников, кроме № отдела)
-    printEmployeesInDepartment(employees,2);
-    ///Распечатываем id, ФИО и зарплату сотрудников конкретного отдела,если зп меньше заданного числа
-    printEmployeeRandomMinNumber(employees,30000);
-    ///Распечатываем id, ФИО и зарплату сотрудников конкретного отдела,если зп больше или равно заданному числу
-    printEmployeeRandomMaxNumber(employees,30000);
-
+    System.out.println(" ");
+    printEmployee(employees);//Распечатываем список всех сотрудников со всеми имеющимися данными
+    calculateSumSalary(employees);//Считаем общую сумму зп всех сотрудников
+    printMinSalary(employees);//Распечатываем сотрудника с min зп
+    printMaxSalary(employees);//Распечатываем сотрудника с max зп
+    calculateAverageSumSalary(employees);//Считаем среднее значение зп по всем сотрудникам
+    printFullNameAllEmployees(employees);//Распечатываем ФИО всех сотрудников
+    System.out.println(" ");
+    calculatePercentSalary(employees,2);//Проиндексировали зп всех сотрудников на % и вызвали изменения в зп каждого сотрудника
+    printMinSalaryInDepartment(employees,2);//Распечатываем минимальную зарплату в конкретном отделе
+    printMaxSalaryInDepartment(employees,2);//Распечатываем максимальную зарплату в конкретном отделе
+    calculateSumSalaryInDepartment(employees,2);//Считаем сумму зарплат всех сотрудников в конкретном отделе
+    calculateAverageSumSalaryInDepartment(employees,2);//Считаем среднюю зарплату по конкретному отделу
+    calculatePercentSalaryInDepartment(employees,2,2);//Индексируем зарплату сотрудников конкретного отдела на заданный %
+    printEmployeesInDepartment(employees,2);//Распечатываем всех сотрудников конкретного отдела (все данные сотрудников, кроме № отдела)
+    printEmployeeRandomMinNumber(employees,30000); //Распечатываем id, ФИО и зарплату сотрудников конкретного отдела,если зп меньше заданного числа
+    printEmployeeRandomMaxNumber(employees,30000);///Распечатываем id, ФИО и зарплату сотрудников конкретного отдела,если зп больше или равно заданному числу
     }
-    public static void printEmployee (Employee[] employees){
+    public static void printEmployee(Employee[] employees){
         for (int i = 0; i< employees.length ; i++){
             System.out.println(employees[i]);
         }
     }
-    public static void calculateSumSalary (Employee[] employees){
+    public static double calculateSumSalary(Employee[] employees){
         double sum =0;
         for (int i = 0; i < employees.length; i++){
             sum += employees[i].getSalary();
         }
-        System.out.println("Сумма затрат на зарплаты в месяц => " + sum + " рублей.");
+        System.out.println("Сумма затрат на зарплаты в месяц: " + sum + " рублей.");
+        return sum;
     }
-    public static void printMinSalary (Employee [] employees){
+    public static void printMinSalary(Employee[] employees){
         double min = employees[0].getSalary();
         int number =0;
         for (int i = 0; i < employees.length; i++){
             if (employees[i].getSalary() < min)
-            number = i;
+                number = i;
         }
-        System.out.println("Сотрудник с минимальной зарплайтой в месяц => " + employees[number] + " рублей.");
+        System.out.println("Сотрудник с минимальной зарплайтой в месяц: " + employees[number] + " рублей.");
     }
-    public static void printMaxSalary (Employee [] employees){
+    public static void printMaxSalary(Employee[] employees){
         double max = employees [0].getSalary();
         int number = 0;
         for (int i = 0; i< employees.length; i++){
             if (max < employees[i].getSalary())
-            number = i;
+                number = i;
         }
-        System.out.println("Сотрудник c максимальной зарплатой в месяц => " + employees[number] + " рублей.");
+        System.out.println("Сотрудник c максимальной зарплатой в месяц: " + employees[number] + " рублей.");
     }
-    public  static void calculateAverageSumSalary (Employee [] employees){
+    public  static double calculateAverageSumSalary(Employee[] employees){
         double average = 0;
-        for (int i = 0; i < employees.length; i++){
-            average += employees[i].getSalary()/employees.length;
-        }
+        average = calculateSumSalary(employees)/employees.length;
         System.out.println("Среднее значение зарплат " + average + " рублей.");
+        return average;
     }
-    public static void calculatePercentSalary (Employee [] employees, double percent){
+    public static double calculatePercentSalary(Employee[] employees, double percent){
         percent = percent/100;
         double salary = 0;
         double salaryPercent = 0;
         for (int i = 0; i < employees.length; i++){
             salary = employees[i].getSalary();
             salaryPercent = (salary * percent) + salary;
-            System.out.println("Зарплата сотрудника после индексации => " + employees[i].getFullName() + " => " + salaryPercent + " рублей.");
+            System.out.println("Зарплата сотрудника после индексации: " + employees[i].getFullName() + ", " + salaryPercent + " рублей.");
         }
+        return salaryPercent;
     }
-    public static void  printFullNameAllEmployees(Employee [] employees){
+    public static void  printFullNameAllEmployees(Employee[] employees){
         int i = 0;
         while (i < employees.length){
-            System.out.println("ФИО сотрудника => " + employees[i].getFullName());
+            System.out.println("ФИО сотрудника: " + employees[i].getFullName());
             i++;
         }
     }
-    public static void printMinSalaryInDepartment (Employee [] employees, int departmentNumber ){
+    public static void printMinSalaryInDepartment(Employee[] employees, int departmentNumber ){
         double min = 0;
         int number = 0;
         for (int i = 0; i < employees.length; i++){
@@ -120,9 +106,9 @@ public class Main {
                 }
             }
         }
-        System.out.println("Сотрудник из " + departmentNumber + " отдела с минимальной зарплайтой в месяц => " + employees[number] + " рублей.");
+        System.out.println("Сотрудник из " + departmentNumber + " отдела с минимальной зарплайтой в месяц: " + employees[number] + " рублей.");
     }
-    public static void printMaxSalaryInDepartment (Employee [] employees, int departmentNumber){
+    public static void printMaxSalaryInDepartment(Employee[] employees, int departmentNumber){
         double max = 0;
         int number = 0;
         for (int i = 0; i < employees.length; i++){
@@ -131,9 +117,9 @@ public class Main {
                 number = i;
             }
         }
-        System.out.println("Сотрудник из " + departmentNumber + " отдела " + " с максимальной зарплатой => " + employees[number]);
+        System.out.println("Сотрудник из " + departmentNumber + " отдела " + " с максимальной зарплатой: " + employees[number]);
     }
-    public static void calculateSumSalaryInDepartment (Employee [] employees, int departmentNumber){
+    public static double calculateSumSalaryInDepartment(Employee[] employees, int departmentNumber){
         double sum = 0;
         int number = 0;
         for (int i = 0; i < employees.length; i++){
@@ -141,9 +127,10 @@ public class Main {
                 sum += employees[i].getSalary();
             }
         }
-        System.out.println("Сумма затрат на зарплаты по " + departmentNumber + " отделу => " + sum + " рублей.");
+        System.out.println("Сумма затрат на зарплаты по " + departmentNumber + " отделу: " + sum + " рублей.");
+        return sum;
     }
-    public static  void calculateAverageSumSalaryInDepartment (Employee [] employees, int departmentNumber){
+    public static  double calculateAverageSumSalaryInDepartment(Employee[] employees, int departmentNumber){
         double average = 0;
         double sum = 0;
         double number = 0;
@@ -154,9 +141,10 @@ public class Main {
             }
         }
         average = sum/number;
-        System.out.println("Средняя зарплата по " + departmentNumber + " отделу => " + average + " рублей.");
+        System.out.println("Средняя зарплата по " + departmentNumber + " отделу: " + average + " рублей.");
+        return average;
     }
-    public static void calculatePercentSalaryInDepartment (Employee [] employees, int departmentNumber, double percent){
+    public static double calculatePercentSalaryInDepartment(Employee[] employees, int departmentNumber, double percent){
         percent = percent/100;
         double salary = 0;
         double salaryPercent = 0;
@@ -164,28 +152,28 @@ public class Main {
             if (employees[i].getDepartmentNumber() == departmentNumber){
                 salary = employees[i].getSalary();
                 salaryPercent = (salary*percent)+salary;
-                System.out.println(employees[i].getFullName() + " из " + departmentNumber + " отдела , зарплата после индексации на " + percent + " % => " + salaryPercent + " рублей.");
+                System.out.println(employees[i].getFullName() + " из " + departmentNumber + " отдела , зарплата после индексации на " + percent + " %  = " + salaryPercent + " рублей.");
             }
         }
+        return salaryPercent;
     }
-    public static void printEmployeesInDepartment (Employee [] employees, int departmentNumber){
+    public static void printEmployeesInDepartment(Employee[] employees, int departmentNumber){
         for (int i = 0; i < employees.length; i++){
             if (employees[i].getDepartmentNumber() == departmentNumber)
-                System.out.println("Сотрудник " + departmentNumber + " отдела =>  id сотрудника : " + employees[i].getId() + ", " + " ФИО : " + employees[i].getFullName() + " , зарплата в месяц : " +  employees[i].getSalary() + " рублей.");
+                System.out.println("Сотрудник " + departmentNumber + " отдела : id сотрудника  " + employees[i].getId() + ", " + " ФИО : " + employees[i].getFullName() + " , зарплата в месяц : " +  employees[i].getSalary() + " рублей.");
         }
     }
-    public static void printEmployeeRandomMinNumber (Employee [] employees, double randomNumber){
+    public static void printEmployeeRandomMinNumber(Employee[] employees, double randomNumber){
         for (int i = 0; i < employees.length; i++){
             if (employees[i].getSalary() < randomNumber)
-            System.out.println("Сотрудник с зарплатой меньше числа " +  randomNumber + " => "  + " id сотрудника : " + employees[i].getId() + ", " + " ФИО : " + employees[i].getFullName() + " , зарплата в месяц : " +  employees[i].getSalary() + " рублей.");
+                System.out.println("Сотрудник с зарплатой меньше числа " +  randomNumber + " : "  + " id сотрудника  " + employees[i].getId() + ", " + " ФИО : " + employees[i].getFullName() + " , зарплата в месяц : " +  employees[i].getSalary() + " рублей.");
         }
     }
-    public static void printEmployeeRandomMaxNumber (Employee [] employees, double randomNumber){
+    public static void printEmployeeRandomMaxNumber(Employee[] employees, double randomNumber){
         for (int i = 0; i < employees.length; i++){
             if (employees[i].getSalary() >= randomNumber)
-                System.out.println("Сотрудник с зарплатой больше или равно числу " +  randomNumber + " => "  + " id сотрудника : " + employees[i].getId() + ", " + " ФИО : " + employees[i].getFullName() + " , зарплата в месяц : " +  employees[i].getSalary() + " рублей.");
+                System.out.println("Сотрудник с зарплатой больше или равно числу " +  randomNumber + " : "  + " id сотрудника  " + employees[i].getId() + ", " + " ФИО : " + employees[i].getFullName() + " , зарплата в месяц : " +  employees[i].getSalary() + " рублей.");
         }
     }
-
 
 }
